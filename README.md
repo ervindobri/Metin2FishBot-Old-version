@@ -1,5 +1,5 @@
 
-# Metin2 Fishing Bot
+# Metin2 Fishing Bot - OLD fishing system
 
 A Metin2 fishing bot for the OLD fishing system.
 This is a fork of https://github.com/vncsms/Metin2FishBot. 
