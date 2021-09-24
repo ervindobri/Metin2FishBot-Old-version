@@ -1,0 +1,1 @@
+GAME_NAME = "Metin2"
