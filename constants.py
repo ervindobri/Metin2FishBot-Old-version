@@ -1,1 +1,1 @@
-GAME_NAME = "Metin2"
+GAME_NAME = "Solaris - w2ntEr"

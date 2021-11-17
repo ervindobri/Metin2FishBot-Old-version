@@ -12,7 +12,8 @@ class PyWindow:
         return [[sg.Text('This bot works with OLD fishing mode.')],
                 [sg.Frame('Bot stop conditions (ignore if infinite)', [
                     [sg.Checkbox('Total Time (Minutes)', key='-ENDTIMEP-'), sg.InputText(size=(5,10), key='-ENDTIME-')],
-                    [sg.Text('Pull-Out time(2...3 recommended):'), sg.InputText(size=(5,10), key='-PULLTIME-')]
+                    [sg.Text('Window name:'), sg.InputText(default_text='Solaris - ', size=(20,20), key='-GAMENAME-')],
+                    [sg.Text('Pull-Out time(2...3 recommended):'), sg.InputText(default_text='2.7', size=(5,10), key='-PULLTIME-')]
                     ])],
                 [sg.Button('START', key='-BUTTONSTART-')]]
 

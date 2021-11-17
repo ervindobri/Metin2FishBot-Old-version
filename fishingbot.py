@@ -67,6 +67,7 @@ class FishingBot:
     pull_time = 2 # Pulling after detecting 2sec
     game_time = 2
     detect_threshold = 0.42
+    not_detected_time = 30
 
     # # This is the filter parameters, this help to find the right image
     # hsv_filter = HsvFilter(*FILTER_CONFIG)
@@ -121,8 +122,10 @@ class FishingBot:
         self.throw_time = values['-THROWTIME-']
         self.pull_time = float(values['-PULLTIME-'])
         self.game_time = values['-STARTGAME-']
+        game_name = values['-GAMENAME-']
+        print(game_name)
 
-        self.wincap = WindowCapture(constants.GAME_NAME)
+        self.wincap = WindowCapture(game_name)
         self.state = 0
         self.initial_time = time()
         self.timer_action = time()
@@ -135,7 +138,7 @@ class FishingBot:
     def runHack(self):
         self.loop_time = time()
         screenshot = self.wincap.get_screenshot()
-        
+        print("State - ", self.state)
         
         # Verify total time
         if self.end_time_enable and time() - self.initial_time > self.end_time:
@@ -168,6 +171,11 @@ class FishingBot:
             if detected:
                 self.state = 3
                 self.timer_action = time()
+            else:
+                if time() - self.timer_action > self.not_detected_time:
+                    self.state = 0
+                    self.timer_action = time()
+
             # elif time() - self.timer_action > self.game_time*30:
             #     self.state = 0
             #     self.timer_action = time()
